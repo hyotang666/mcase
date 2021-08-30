@@ -29,6 +29,18 @@
   (check-exhaust type clauses)
   `(ecase ,<target> ,@clauses))
 
+(defun pprint-mcase-clause (output clause &rest noise)
+  (declare (ignore noise))
+  (funcall
+    (formatter
+     #.(concatenate 'string "~:<" ; pprint-logical-block.
+                    "~^~W~1I~^ ~_" ; targets
+                    "~@{" ; iterate for clause body.
+                    "~W~^ ~_" ; each form.
+                    "~}" ; end of iter.
+                    "~:>"))
+    output clause))
+
 (defun pprint-mcase (output exp)
   (funcall
     (formatter
@@ -37,7 +49,7 @@
                     "~W~^ ~@_" ; type
                     "~W~^ ~:_" ; <target>
                     "~@{" ; iterate clauses.
-                    "~W~^ ~_" ; each clause.
+                    "~/mcase:pprint-mcase-clause/~^ ~_" ; each clause.
                     "~}" ; end of iter.
                     "~:>"))
     output exp))
