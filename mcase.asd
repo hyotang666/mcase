@@ -2,9 +2,11 @@
 (in-package :asdf)
 (defsystem "mcase"
   :version
-  "0.0.0"
+  "1.0.0"
   :depends-on
-  nil
+  (
+   "millet"     ; Wrapper for implementation dependent utilities.
+   )
   :pathname
   "src/"
   :components
