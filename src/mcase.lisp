@@ -28,3 +28,18 @@
 (defmacro emcase (type <target> &body clauses)
   (check-exhaust type clauses)
   `(ecase ,<target> ,@clauses))
+
+(defun pprint-mcase (output exp)
+  (funcall
+    (formatter
+     #.(concatenate 'string "~:<" ; pprint-logical-block.
+                    "~W~^~1I ~@_" ; operator.
+                    "~W~^ ~@_" ; type
+                    "~W~^ ~:_" ; <target>
+                    "~@{" ; iterate clauses.
+                    "~W~^ ~_" ; each clause.
+                    "~}" ; end of iter.
+                    "~:>"))
+    output exp))
+
+(set-pprint-dispatch '(cons (member mcase emcase)) 'pprint-mcase)
