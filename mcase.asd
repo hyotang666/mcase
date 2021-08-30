@@ -10,7 +10,12 @@
   :pathname
   "src/"
   :components
-  ((:file "mcase")))
+  ((:file "mcase"))
+  :description "Control frow macros with case comprehensiveness checking."
+  :author "SATO Shinichi"
+  :license "Public domain"
+  :source-control (:git "git@github.com:hyotang666/mcase")
+  :bug-tracker "https://github.com/hyotang666/mcase/issues")
 
 ;;; These forms below are added by JINGOH.GENERATOR.
 ;; Ensure in ASDF for pretty printings.
