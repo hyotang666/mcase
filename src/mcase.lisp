@@ -47,7 +47,7 @@
      #.(concatenate 'string "~:<" ; pprint-logical-block.
                     "~W~^~1I ~@_" ; operator.
                     "~W~^ ~@_" ; type
-                    "~W~^ ~:_" ; <target>
+                    "~W~^ ~_" ; <target>
                     "~@{" ; iterate clauses.
                     "~/mcase:pprint-mcase-clause/~^ ~_" ; each clause.
                     "~}" ; end of iter.
